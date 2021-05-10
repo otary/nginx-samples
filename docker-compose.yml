@@ -8,7 +8,7 @@ services:
       - 8000:80
     volumes:
       - ./volumes/html:/usr/share/nginx/html
-
+      - ./nginx/conf:/etc/nginx/conf.d
 
   nginx2:
     image: nginx
@@ -16,5 +16,6 @@ services:
     ports:
       - 8001:80
     volumes:
-      - ./volumes/html:/usr/share/nginx/html
+      - ./volumes/html2:/usr/share/nginx/html
+      - ./nginx/conf2:/etc/nginx/conf.d
 
