@@ -19,3 +19,13 @@ services:
       - ./volumes/html2:/usr/share/nginx/html
       - ./nginx/conf2:/etc/nginx/conf.d
 
+  nginx-proxy:
+    image: jwilder/nginx-proxy
+    container_name: nginx-proxy
+    ports:
+      - 8008:80
+    volumes:
+      - ./nginx-proxy/conf.d:/etc/nginx/conf.d
+      - ./nginx-proxy/nginx.tmpl:/app/nginx.tmpl:rw
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./nginx-proxy/html:/usr/share/nginx/html:rw
